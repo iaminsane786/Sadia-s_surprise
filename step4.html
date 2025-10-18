@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 4 - Special Day</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('bgstep4.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      color: #222;
+    }
+
+    .box {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      padding: 25px;
+      max-width: 350px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background: red;
+      color: white;
+    }
+
+    #videoContainer {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    video {
+      width: 400px;
+      border-radius: 12px;
+    }
+
+    #timer {
+      margin-top: 8px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.7);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .popup {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 18px;
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mainBox" class="box" style="top:45%; left:50%; transform:translate(-50%,-50%);">
+    Suna hai Aj kuch special hai wese 👀....
+    <br><br>
+    <button onclick="clickedYes()">Han hai 🙂</button>
+    <button onclick="clickedNo()">Nahi to 🥲</button>
+  </div>
+
+  <div id="videoContainer">
+    <video id="video1" src="videostep4.mp4"></video>
+    <div id="timer">7</div>
+  </div>
+
+  <audio id="sound"></audio>
+
+  <script>
+    const sound = document.getElementById("sound");
+
+    function playSound(name) {
+      sound.src = name;
+      sound.play();
+    }
+
+    function showPopup(msg, duration=1200) {
+      let pop = document.createElement("div");
+      pop.className = "popup";
+      pop.innerText = msg;
+      pop.style.top = Math.random()*60 + "%";
+      pop.style.left = Math.random()*60 + "%";
+      document.body.appendChild(pop);
+      setTimeout(()=> pop.remove(), duration);
+    }
+
+    // disable buttons of older boxes
+    function disableOldButtons() {
+      document.querySelectorAll(".box button").forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = 0.6;
+      });
+    }
+
+    // first No
+    function clickedNo(){
+      disableOldButtons();
+      playSound("nahisound1.mp4");
+      showPopup("Kyu jhuth bol rhe ho 😏");
+    }
+
+    // first Yes
+    function clickedYes(){
+      disableOldButtons();
+      playSound("yes1.mp4");
+      makeBox("Kya hai aaj is din me hame bataoge ya nhi😁",
+        [{txt:"Zrur bataenge", fn:"clickedYes2()"},
+         {txt:"Majboori me bata rhe😶", fn:"clickedYes2()"}]);
+    }
+
+    function clickedYes2(){
+      disableOldButtons();
+      playSound("yes2.mp4");
+      makeBox("Aaj kisi ka Janamdin hai kya😶",
+        [{txt:"haaan", fn:"clickedYes3()"},
+         {txt:"Naah ka jawab hi nhi", fn:"clickedYes3()"}]);
+    }
+
+    function clickedYes3(){
+      disableOldButtons();
+      playSound("yes3.mp4");
+      makeBox("For Next step click me",
+        [{txt:"Proceed😶", fn:"clickedYes4()"}]);
+    }
+
+    function clickedYes4(){
+      disableOldButtons();
+      playSound("yes4.mp4");
+      makeBox("Sach me aage badnaa hai",
+        [{txt:"Hmmm", fn:"clickedYes5()"}]);
+    }
+
+    function clickedYes5(){
+      disableOldButtons();
+      playSound("yes5.mp4");
+      makeBox("Sachi sachi bolo😁",
+        [{txt:"Are Haan baba", fn:"clickedYes6()"}]);
+    }
+
+    function clickedYes6(){
+      disableOldButtons();
+      playSound("yes6.mp4");
+      makeBox("Pakka na",
+        [{txt:"Are kitna parehan karoge🤦🏻‍♀️", fn:"clickedYes7()"}]);
+    }
+
+    function clickedYes7(){
+      disableOldButtons();
+      playSound("yes7.mp4");
+      makeBox("Chalo itna bol rhe ho to aage badte hai ab",
+        [{txt:"CHALOOOO😁", fn:"finalProceed()"}]);
+    }
+
+    function makeBox(text, buttons){
+      let box = document.createElement("div");
+      box.className = "box";
+      box.style.top = Math.random()*60 + "%";
+      box.style.left = Math.random()*60 + "%";
+      box.innerHTML = text + "<br><br>";
+      buttons.forEach(b=>{
+        box.innerHTML += `<button onclick="${b.fn}">${b.txt}</button>`;
+      });
+      document.body.appendChild(box);
+    }
+
+    // Final proceed → play videos
+    function finalProceed(){
+      disableOldButtons();
+      playSound("yes8.mp4");
+      setTimeout(()=>{
+        document.querySelectorAll(".box").forEach(b=>b.remove());
+        startVideos();
+      }, 1200);
+    }
+
+    function startVideos(){
+      const vidContainer = document.getElementById("videoContainer");
+      const video1 = document.getElementById("video1");
+      const timer = document.getElementById("timer");
+
+      vidContainer.style.display = "flex";
+      video1.play();
+
+      let time = 7;
+      const t1 = setInterval(()=>{
+        time--;
+        timer.innerText = time;
+        if(time<=0){
+          clearInterval(t1);
+          playSecondVideo();
+        }
+      },1000);
+
+      video1.onended = ()=> playSecondVideo();
+    }
+
+    function playSecondVideo(){
+      const video1 = document.getElementById("video1");
+      video1.src = "video2step4.mp4";
+      const timer = document.getElementById("timer");
+      let time = 10;
+      timer.innerText = time;
+      video1.play();
+
+      const t2 = setInterval(()=>{
+        time--;
+        timer.innerText = time;
+        if(time<=0){
+          clearInterval(t2);
+          window.location.href = "step5.html";
+        }
+      },1000);
+
+      video1.onended = ()=> window.location.href = "step5.html";
+    }
+  </script>
+
+</body>
+</html>
