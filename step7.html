@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 7 - Final Video</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('bgstep7.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    video {
+      width: 60%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video1" src="video7.mp4" autoplay></video>
+
+  <script>
+    const video1 = document.getElementById('video1');
+
+    video1.addEventListener('ended', () => {
+      window.location.href = 'step8.html'; // next step
+    });
+  </script>
+
+</body>
+</html>
