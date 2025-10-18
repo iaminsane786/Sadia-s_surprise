@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 8 - Final Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('bgstep8.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+
+    .text-center {
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-bottom: 20px;
+    }
+
+    video, img {
+      width: 60%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      display: none;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Initial Text -->
+  <div id="initialText" class="text-center">
+    I HAVE SOMETHING FOR YOU SADIAAAA😁🌷💗
+  </div>
+
+  <!-- Videos -->
+  <video id="video8" src="video8.mp4"></video>
+  <video id="video9" src="video9.mp4"></video>
+
+  <!-- Final Image -->
+  <img id="finalImage" src="final8.jpg">
+
+  <!-- Final Text -->
+  <div id="finalText" class="text-center" style="display:none;">
+    HAPPY BIRTHDAY TO MY BEAUTIFUL SISTER 🌷 HOPE THIS SMALL GIFT 🎁 WILL MAKE YOU HAPPY, MAY ALLAH ALWAYS KEEP YOU HAPPY 😊.
+  </div>
+
+  <!-- Looping Sound -->
+  <audio id="loopSound" src="khatam.mp3" loop></audio>
+
+  <script>
+    const initialText = document.getElementById('initialText');
+    const finalText = document.getElementById('finalText');
+    const video8 = document.getElementById('video8');
+    const video9 = document.getElementById('video9');
+    const finalImage = document.getElementById('finalImage');
+    const loopSound = document.getElementById('loopSound');
+
+    // Step 1: Show initial text for 3.4 seconds
+    setTimeout(() => {
+      initialText.style.display = 'none';
+      video8.style.display = 'block';
+      video8.play();
+    }, 3400);
+
+    // When video8 ends → play video9
+    video8.addEventListener('ended', () => {
+      video8.style.display = 'none';
+      video9.style.display = 'block';
+      finalText.style.display = 'block';
+      video9.play();
+    });
+
+    // When video9 ends → show final image, keep text, play loop sound
+    video9.addEventListener('ended', () => {
+      video9.style.display = 'none';
+      finalImage.style.display = 'block';
+      loopSound.play();
+    });
+  </script>
+
+</body>
+</html>
