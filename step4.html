@@ -119,14 +119,14 @@
     // first No
     function clickedNo(){
       disableOldButtons();
-      playSound("nahisound1.mp4");
+      playSound("nahisound1.mp3");
       showPopup("Kyu jhuth bol rhe ho 😏");
     }
 
     // first Yes
     function clickedYes(){
       disableOldButtons();
-      playSound("yes1.mp4");
+      playSound("yes1.mp3");
       makeBox("Kya hai aaj is din me hame bataoge ya nhi😁",
         [{txt:"Zrur bataenge", fn:"clickedYes2()"},
          {txt:"Majboori me bata rhe😶", fn:"clickedYes2()"}]);
@@ -134,7 +134,7 @@
 
     function clickedYes2(){
       disableOldButtons();
-      playSound("yes2.mp4");
+      playSound("yes2.mp3");
       makeBox("Aaj kisi ka Janamdin hai kya😶",
         [{txt:"haaan", fn:"clickedYes3()"},
          {txt:"Naah ka jawab hi nhi", fn:"clickedYes3()"}]);
@@ -142,35 +142,35 @@
 
     function clickedYes3(){
       disableOldButtons();
-      playSound("yes3.mp4");
+      playSound("yes3.mp3");
       makeBox("For Next step click me",
         [{txt:"Proceed😶", fn:"clickedYes4()"}]);
     }
 
     function clickedYes4(){
       disableOldButtons();
-      playSound("yes4.mp4");
+      playSound("yes4.mp3");
       makeBox("Sach me aage badnaa hai",
         [{txt:"Hmmm", fn:"clickedYes5()"}]);
     }
 
     function clickedYes5(){
       disableOldButtons();
-      playSound("yes5.mp4");
+      playSound("yes5.mp3");
       makeBox("Sachi sachi bolo😁",
         [{txt:"Are Haan baba", fn:"clickedYes6()"}]);
     }
 
     function clickedYes6(){
       disableOldButtons();
-      playSound("yes6.mp4");
+      playSound("yes6.mp3");
       makeBox("Pakka na",
         [{txt:"Are kitna parehan karoge🤦🏻‍♀️", fn:"clickedYes7()"}]);
     }
 
     function clickedYes7(){
       disableOldButtons();
-      playSound("yes7.mp4");
+      playSound("yes7.mp3");
       makeBox("Chalo itna bol rhe ho to aage badte hai ab",
         [{txt:"CHALOOOO😁", fn:"finalProceed()"}]);
     }
@@ -190,7 +190,7 @@
     // Final proceed → play videos
     function finalProceed(){
       disableOldButtons();
-      playSound("yes8.mp4");
+      playSound("yes8.mp3");
       setTimeout(()=>{
         document.querySelectorAll(".box").forEach(b=>b.remove());
         startVideos();
