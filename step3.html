@@ -29,13 +29,19 @@
       font-size: 18px;
       line-height: 1.5;
     }
+
+    video.center-video {
+      width: 60%;
+      max-width: 800px;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <img src="centerstep3.png" alt="Center Image" class="center-img">
+  <img src="centerstep3.png" alt="Center Image" class="center-img" id="centerImg">
 
-  <div class="caption">
+  <div class="caption" id="caption">
     Ye meri Behen ki Sachi Kahani par adharit hai - Kahate hue bahut dukh aur gam ho raha hai 😌  
     jab main Chhota tha tab main Aksar bimar pad jata tha lagta tha ki koi Mera Sahara nahin Banega😯  
     Fir Mummy ♥️ Papa bahar Gaye the to unhone tumhen ek road side paya,  
@@ -44,14 +50,30 @@
     Ye sach me batana nhi chahta Mummy papa ne mana kiya tha but Aaj is afsar me keh deta hun ye sachaiiiii....👀
   </div>
 
+  <video id="step3Video" class="center-video" src="videostep3.mp4" controls></video>
+
   <audio id="bgMusic" src="bgmusicstep3.mp3" autoplay loop></audio>
 
   <script>
-    // Automatically go to Step 4 after 15 seconds
+    const bgMusic = document.getElementById('bgMusic');
+    const centerImg = document.getElementById('centerImg');
+    const caption = document.getElementById('caption');
+    const video = document.getElementById('step3Video');
+
+    // After 17 sec → hide image & caption, stop music, show video
     setTimeout(() => {
-      window.location.href = 'step4.html';
+      bgMusic.pause();
+      centerImg.style.display = 'none';
+      caption.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
     }, 17000);
+
+    // Video end → Step 4
+    video.onended = function() {
+      window.location.href = 'step4.html';
+    };
   </script>
 
 </body>
-</html>￼Enter
+</html>
