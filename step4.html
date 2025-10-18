@@ -79,8 +79,8 @@
   <div id="mainBox" class="box" style="top:45%; left:50%; transform:translate(-50%,-50%);">
     Suna hai Aj kuch special hai wese 👀....
     <br><br>
-    <button onclick="clickedYes()">Han hai 🙂</button>
-    <button onclick="clickedNo()">Nahi to 🥲</button>
+    <button onclick="clickedYes(this)">Han hai 🙂</button>
+    <button onclick="clickedNo(this)">Nahi to 🥲</button>
   </div>
 
   <div id="videoContainer">
@@ -108,71 +108,62 @@
       setTimeout(()=> pop.remove(), duration);
     }
 
-    // disable buttons of older boxes
-    function disableOldButtons() {
-      document.querySelectorAll(".box button").forEach(btn => {
-        btn.disabled = true;
-        btn.style.opacity = 0.6;
-      });
-    }
-
-    // first No
-    function clickedNo(){
-      disableOldButtons();
+    // --- Individual button handling (no disabling of other boxes) ---
+    function clickedNo(btn){
+      btn.disabled = true;
       playSound("nahisound1.mp3");
       showPopup("Kyu jhuth bol rhe ho 😏");
     }
 
-    // first Yes
-    function clickedYes(){
-      disableOldButtons();
+    function clickedYes(btn){
+      btn.disabled = true;
       playSound("yes1.mp3");
       makeBox("Kya hai aaj is din me hame bataoge ya nhi😁",
-        [{txt:"Zrur bataenge", fn:"clickedYes2()"},
-         {txt:"Majboori me bata rhe😶", fn:"clickedYes2()"}]);
+        [{txt:"Zrur bataenge", fn:"clickedYes2(this)"},
+         {txt:"Majboori me bata rhe😶", fn:"clickedYes2(this)"}]);
     }
 
-    function clickedYes2(){
-      disableOldButtons();
+    function clickedYes2(btn){
+      btn.disabled = true;
       playSound("yes2.mp3");
       makeBox("Aaj kisi ka Janamdin hai kya😶",
-        [{txt:"haaan", fn:"clickedYes3()"},
-         {txt:"Naah ka jawab hi nhi", fn:"clickedYes3()"}]);
+        [{txt:"haaan", fn:"clickedYes3(this)"},
+         {txt:"Naah ka jawab hi nhi", fn:"clickedYes3(this)"}]);
     }
 
-    function clickedYes3(){
-      disableOldButtons();
+    function clickedYes3(btn){
+      btn.disabled = true;
       playSound("yes3.mp3");
       makeBox("For Next step click me",
-        [{txt:"Proceed😶", fn:"clickedYes4()"}]);
+        [{txt:"Proceed😶", fn:"clickedYes4(this)"}]);
     }
 
-    function clickedYes4(){
-      disableOldButtons();
+    function clickedYes4(btn){
+      btn.disabled = true;
       playSound("yes4.mp3");
       makeBox("Sach me aage badnaa hai",
-        [{txt:"Hmmm", fn:"clickedYes5()"}]);
+        [{txt:"Hmmm", fn:"clickedYes5(this)"}]);
     }
 
-    function clickedYes5(){
-      disableOldButtons();
+    function clickedYes5(btn){
+      btn.disabled = true;
       playSound("yes5.mp3");
       makeBox("Sachi sachi bolo😁",
-        [{txt:"Are Haan baba", fn:"clickedYes6()"}]);
+        [{txt:"Are Haan baba", fn:"clickedYes6(this)"}]);
     }
 
-    function clickedYes6(){
-      disableOldButtons();
+    function clickedYes6(btn){
+      btn.disabled = true;
       playSound("yes6.mp3");
       makeBox("Pakka na",
-        [{txt:"Are kitna pareshan karoge🤦🏻‍♀️", fn:"clickedYes7()"}]);
+        [{txt:"Are kitna pareshan karoge🤦🏻‍♀️", fn:"clickedYes7(this)"}]);
     }
 
-    function clickedYes7(){
-      disableOldButtons();
+    function clickedYes7(btn){
+      btn.disabled = true;
       playSound("yes7.mp3");
       makeBox("Chalo itna bol rhe ho to aage badte hai ab",
-        [{txt:"CHALOOOO😁", fn:"finalProceed()"}]);
+        [{txt:"CHALOOOO😁", fn:"finalProceed(this)"}]);
     }
 
     function makeBox(text, buttons){
@@ -187,16 +178,15 @@
       document.body.appendChild(box);
     }
 
-    // Final proceed → play videos
-    function finalProceed(){
-      disableOldButtons();
+    function finalProceed(btn){
+      btn.disabled = true;
       playSound("yes8.mp3");
       setTimeout(()=>{
-        document.querySelectorAll(".box").forEach(b=>b.remove());
         startVideos();
       }, 1200);
     }
 
+    // --- Video logic remains same ---
     function startVideos(){
       const vidContainer = document.getElementById("videoContainer");
       const video1 = document.getElementById("video1");
