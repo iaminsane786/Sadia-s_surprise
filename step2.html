@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 2 - Dance Time</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('bgstep2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .caption {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 60%;
+      max-width: 800px;
+      margin-bottom: 15px;
+    }
+
+    .btn-skip {
+      padding: 10px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #dc3545;
+      color: white;
+      font-weight: bold;
+    }
+
+    .popup {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.75);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 20px;
+      display: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="caption">Shuru Krne se pehle kuch dance shance ho jae🕺💃👀 ...</div>
+
+  <video id="danceVideo" src="videostep2.mp4" autoplay></video>
+
+  <button class="btn-skip" onclick="showSkipPopup()">SKIP</button>
+
+  <div class="popup" id="skipPopup">Chup chap dance dekho😑</div>
+
+  <script>
+    const video = document.getElementById('danceVideo');
+    const popup = document.getElementById('skipPopup');
+
+    // Video end → Step 3
+    video.onended = function() {
+      window.location.href = 'step3.html';
+    };
+
+    // Skip button → show popup temporarily
+    function showSkipPopup() {
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
