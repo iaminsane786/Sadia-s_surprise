@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 6 - Continued Story</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('bgstep6.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    video {
+      width: 60%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video1" src="video5.mp4" autoplay></video>
+  <video id="video2" src="video6.mp4" style="display:none;"></video>
+
+  <script>
+    const video1 = document.getElementById('video1');
+    const video2 = document.getElementById('video2');
+
+    // When first video ends, switch to second
+    video1.addEventListener('ended', () => {
+      video1.style.display = 'none';
+      video2.style.display = 'block';
+      video2.play();
+    });
+
+    // When second video ends, move to next step
+    video2.addEventListener('ended', () => {
+      window.location.href = 'step7.html';
+    });
+  </script>
+
+</body>
+</html>
