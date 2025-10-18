@@ -15,7 +15,7 @@
       background: url('bgstep3.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
-      color: white;
+      color: black; /* default body color black */
       text-align: center;
     }
 
@@ -28,12 +28,16 @@
       max-width: 80%;
       font-size: 18px;
       line-height: 1.5;
+      color: black; /* changed to black */
+      text-shadow: 1px 1px 3px rgba(255,255,255,0.7); /* optional: makes black text readable on dark backgrounds */
     }
 
     video.center-video {
       width: 60%;
       max-width: 800px;
       display: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
   </style>
 </head>
